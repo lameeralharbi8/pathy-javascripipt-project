@@ -2,8 +2,8 @@ import { sendMessage } from "./api.js";
 import { setStatus } from "./render.js";
 
 const form = document.querySelector("#contact-form");
-const status = document.querySelector("#from-status");
-const submitButton = form.querySelector('button[type="submit"]');
+const status = document.querySelector("#form-status");
+const submitButton = document.querySelector("#send");
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -13,7 +13,7 @@ form.addEventListener("submit", async (event) => {
   const email = String(data.get("email") || "").trim();
   const message = String(data.get("message") || "").trim();
 
-  if (!name || message.length < 10 || !email) {
+  if (!name || !email || message.length < 10) {
     setStatus(status, "تأكدي من الاسم والبريد والرسالة (10 أحرف على الأقل).");
     return;
   }
