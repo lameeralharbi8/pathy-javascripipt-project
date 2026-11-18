@@ -2,7 +2,7 @@ import { sendMessage } from "./api.js";
 import { setStatus } from "./render.js";
 
 const form = document.querySelector("#contact-form");
-const status = document.querySelector("#form-status");
+const status = document.querySelector("#status");
 const submitButton = document.querySelector("#send");
 
 form.addEventListener("submit", async (event) => {
