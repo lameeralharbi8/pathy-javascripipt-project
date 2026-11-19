@@ -10,6 +10,14 @@ async function loadProjects() {
   setStatus(status, "جاري تحميل المشاريع...");
 
   try {
+    // اختبار رسالة الخطأ عند إضافة ?test-error للرابط
+    const testError = new URLSearchParams(window.location.search)
+      .has("test-error");
+
+    if (testError) {
+      throw new Error("تعذر تحميل المشاريع. تحقق من اتصال الإنترنت وحاول مرة أخرى.");
+    }
+
     const repos = await getRepos();
 
     const filtered = repos.filter(repo => !repo.fork);
